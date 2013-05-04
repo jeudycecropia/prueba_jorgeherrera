@@ -1,0 +1,111 @@
+@import "compass_twitter_bootstrap";
+@import "compass_twitter_bootstrap_responsive";
+
+.appDesc{
+	margin-top: 50px;
+}
+
+.navbar .brand-icon{
+	float: left;
+	width: 30px;
+	height: 30px;
+	display: none;
+	background: url(../images/icon.png) no-repeat 0 0 transparent;
+	background-size: 100%;
+	margin-top: 5px;
+	margin-right: 5px;
+}
+
+#map-canvas{
+	width:100%;
+	height: 400px;
+}
+
+dl{
+	font-size: 95%;
+}
+
+dd.date{
+	float: right;
+	font-size: 12px; 
+}
+
+footer{
+	margin-top: 20px;
+	text-align: center;
+}
+
+@media (max-width: 980px) {
+
+	.hero-unit h1{
+		font-size: 50px;
+	}
+}
+
+@media (max-width: 767px) {
+
+	.citiesNav{
+		position: fixed;
+		top: 0;
+		width:95%;
+	}
+}
+
+@media (max-width: 530px) {
+
+	.navbar .brand{
+		display: none;
+	}
+
+	.navbar .brand-icon{
+		display: block;
+	}
+
+	.citiesNav{
+		width:90%;
+	}
+
+	.well h2{
+		font-size: 24px;
+	}
+
+	.hero-unit h1{
+		font-size: 45px;
+	}
+
+	.citiesNav.navbar .nav > li > a{
+		font-size: 13px;
+	}
+
+}
+
+@media (max-width: 430px) {
+
+	.citiesNav{
+		width:87%;
+	}
+
+	.citiesNav.navbar .nav > li > a{
+		font-size: 11px;
+		padding-left: 7px;
+		padding-right: 7px;
+	}
+
+	.navbar-inner{
+		padding-left: 10px;
+		padding-right: 0px;
+	}
+
+	.well h2{
+		font-size: 20px;
+	}
+
+	.hero-unit {
+		padding: 30px;
+	}
+
+	.hero-unit h1{
+		font-size: 35px;
+	}
+
+}
