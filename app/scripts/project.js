@@ -128,11 +128,11 @@
   WeatherApp.factory("WeatherInfo", function($http) {
     var allCities, cityList;
 
-    allCities = "/data/allcities.json";
+    allCities = "data/allcities.json";
     cityList = {
-      Austin: "/data/austin.json",
-      Washington: "/data/washington.json",
-      "Los Angeles": "/data/la.json"
+      Austin: "data/austin.json",
+      Washington: "data/washington.json",
+      "Los Angeles": "data/la.json"
     };
     return {
       getAllCitiesWeather: function(callback) {
