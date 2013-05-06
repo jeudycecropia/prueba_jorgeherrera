@@ -1,0 +1,33 @@
+<div class="span6">
+	<div class="hero-unit" ng-controller="MainCtrl">
+		<h1 ng-bind="city"></h1>
+		<h3>Stats</h3>
+		<dl>
+			<dt>Location:</dt>
+			<dd ng-bind="cityStats.location"></dd>
+
+			<dt>Weather:</dt>
+			<dd ng-bind="cityStats.weather | capitalize"></dd>
+
+			<dt>Wind:</dt>
+			<dd>
+				<span ng-bind="cityStats.windMph + '/mph - '"></span>
+				<span ng-bind="cityStats.windDir"></span>
+			</dd>
+
+			<dt>Temperature:</dt>
+			<dd>
+				<span ng-bind="cityStats.tempF + '° F - ' "></span>
+				<span ng-bind="cityStats.tempC + '° C'"></span>
+			</dd>
+
+			<dt>Rain chance:</dt>
+			<dd ng-bind="cityStats.rainChance"></dd>
+
+			<dd class="date" ng-bind="cityStats.observationTime | date:'medium'"></dd>
+		</dl>
+	</div>
+</div>
+<div class="span5">
+	<div id="map-canvas"></div>
+</div>
