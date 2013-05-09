@@ -17,13 +17,38 @@
     });
   });
 
+  WeatherApp.run(function($rootScope, $location, $routeParams) {
+    return $rootScope.$on("$routeChangeStart", function(event, next, current) {
+      var city;
+
+      city = (next.params.hasOwnProperty("city") ? next.params.city : next.params.city = "");
+      if (!city.match(/(Washington|Los Angeles|Austin)/g)) {
+        return $location.path("/");
+      }
+    });
+  });
+
   WeatherApp.controller("CityCtrl", function($scope, $rootScope, $routeParams, WeatherInfo, GoogleMap) {
-    var i, len, navList;
+    var getCityData, i, len, navList;
 
     $scope.city = $routeParams.city;
     WeatherInfo.getCityWeather($routeParams.city, function(data) {
+      getCityData(data.location);
       return $scope.cityStats = data;
     });
+    getCityData = function(name) {
+      return GoogleMap.getMapData(name, function(data) {
+        var pos;
+
+        pos = data[0].geometry.viewport;
+        return GoogleMap.setMapPos("map-canvas", 12, {
+          lat: pos.fa.d,
+          lon: pos.ia.d
+        }, function(data) {
+          return console.log(data);
+        });
+      });
+    };
     GoogleMap.setMapPos("map-canvas", 4, {
       lat: 39.328404,
       lon: -102.128906
@@ -44,19 +69,6 @@
     WeatherInfo.getAllCitiesWeather(function(data) {
       return $scope.allcities = data;
     });
-    $rootScope.getCityData = function(name) {
-      return GoogleMap.getMapData(name, function(data) {
-        var pos;
-
-        pos = data[0].geometry.viewport;
-        return GoogleMap.setMapPos("map-canvas", 12, {
-          lat: pos.Z.d,
-          lon: pos.fa.b
-        }, function(data) {
-          return console.log(data);
-        });
-      });
-    };
     return GoogleMap.setMapPos("map-canvas", 5, {
       lat: 39.328404,
       lon: -102.128906

@@ -10,3 +10,8 @@ WeatherApp.config ($routeProvider) ->
     templateUrl: "views/city.html"
     controller: "CityCtrl"
   ).otherwise redirectTo: "/"
+
+WeatherApp.run ($rootScope, $location, $routeParams) ->
+  $rootScope.$on "$routeChangeStart", (event, next, current) ->
+    city = (if next.params.hasOwnProperty("city") then next.params.city else next.params.city = "")
+    $location.path "/"  unless city.match(/(Washington|Los Angeles|Austin)/g)

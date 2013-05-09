@@ -5,8 +5,19 @@
 #
 WeatherApp.controller "CityCtrl", ($scope, $rootScope, $routeParams, WeatherInfo, GoogleMap) ->
   $scope.city = $routeParams.city
+  
   WeatherInfo.getCityWeather $routeParams.city, (data) ->
+    getCityData data.location
     $scope.cityStats = data
+
+  getCityData = (name) ->
+    GoogleMap.getMapData name, (data) ->
+      pos = data[0].geometry.viewport
+      GoogleMap.setMapPos "map-canvas", 12,
+        lat: pos.fa.d
+        lon: pos.ia.d
+      , (data) ->
+        console.log data
 
   GoogleMap.setMapPos "map-canvas", 4,
     lat: 39.328404
