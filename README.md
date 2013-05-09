@@ -10,3 +10,5 @@ I believe you have to run 'npm install' and 'bower install' to install all the d
 Type 'grunt server' in console to open a server and watch the app
 
 Type 'grunt test' to run jasmine tests
+
+Type 'grunt build' to build the project and run test at same time
